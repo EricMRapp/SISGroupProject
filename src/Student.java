@@ -5,10 +5,9 @@ public class Student
 		private double GPA;
 		private ArrayList<Course> classes;
 		
-		public Student(String n, double g)
+		public Student(String n)
 		{
 			name = n;
-			GPA = g;
 			classes = new ArrayList<Course>();
 		}
 
