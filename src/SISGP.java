@@ -8,11 +8,31 @@ import java.util.ArrayList;
 public class SISGP
 	{
 		static ArrayList<Student> students = new ArrayList<Student>();
+		static Scanner userIntPut = new Scanner(System.in);
+		static int userChoice;
 		
 		public static void main(String[] args) throws FileNotFoundException
 			{
 				readStudents();
-				printStudents();
+				System.out.println("Welcome to the Student Information System. Accessing database...\n Would you like to: \n\t"
+						+ "1) Add or Delete a student\n\t"
+						+ "2) Change a student's Grades or Schedule\n\t"
+						+ "3) Sort students\n\t"
+						+ "4) Print student roster");
+				userChoice = userIntPut.nextInt();
+				switch(userChoice)
+				{
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						printStudents();
+					default:
+						break;
+				}
 			}
 		
 		public static void readStudents() throws FileNotFoundException
