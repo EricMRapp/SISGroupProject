@@ -2,9 +2,9 @@ public class Course
 	{
 		private int period;
 		private String name;
-		private char grade;
+		private String grade;
 		
-		public Course(int p, String n, char g)
+		public Course(int p, String n, String g)
 		{
 			period = p;
 			name = n;
@@ -29,11 +29,11 @@ public class Course
 				this.name = name;
 			}
 
-		public char getGrade()
+		public String getGrade()
 			{
 				return grade;
 			}
-		public void setGrade(char grade)
+		public void setGrade(String grade)
 			{
 				this.grade = grade;
 			}
