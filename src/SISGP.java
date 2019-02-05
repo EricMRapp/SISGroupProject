@@ -57,6 +57,7 @@ public class SISGP
 					students.add(s);
 				}
 		}
+		
 		public static void printStudents()
 		{
 			for(Student s: students)
@@ -70,5 +71,43 @@ public class SISGP
 					System.out.print("\n");
 				}
 		}
+		//removes students from the array
+		public static void removeStudents()
+		{
+			
+			boolean removeRunner = true;
+			while(removeRunner == true)
+			{
+			System.out.println("What Student would you like to delete?");
+			printStudents();
+			Scanner removing = new Scanner(System.in);
+			int childRemove = removing.nextInt();
+			
+			if(childRemove == 1)
+			{
+				students.remove(childRemove - 1);
+			}
+			else
+			{
+			students.remove(childRemove - 1);
+			printStudents(); //calls printStudents method with the student missing that you chose
+			}
+		
+			System.out.println("Would you like to remove another student?");
+			Scanner remove = new Scanner(System.in);
+			String rerunRemove = remove.nextLine();
+			if(rerunRemove == ("yes"))
+				{
+					removeRunner = true;
+					printStudents();
+					
+				}
+			else
+			{
+					removeRunner = false;
+			}
+		}
+		}
+		}
 
-	}
+	
