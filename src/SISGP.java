@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.io.*;
 import java.nio.file.Files;
@@ -38,6 +39,7 @@ public class SISGP
 						break;
 					default:
 						break;
+				}
 			}
 		
 		public static void readStudents() throws FileNotFoundException
