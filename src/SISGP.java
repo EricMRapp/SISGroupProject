@@ -30,6 +30,10 @@ public class SISGP
 						break;
 					case 4:
 						printStudents();
+						break;
+					case 5:
+						calculateGPA();
+						break;
 					default:
 						break;
 				}
@@ -159,6 +163,7 @@ public class SISGP
 									break;
 							}
 						}
+					System.out.println(gpa/3);
 					students.get(i).setGPA(gpa/3);
 					gpa =0;
 				}
