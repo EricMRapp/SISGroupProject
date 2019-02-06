@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.io.*;
 import java.nio.file.Files;
@@ -23,6 +24,7 @@ public class SISGP
 				switch(userChoice)
 				{
 					case 1:
+						removeStudents();
 						break;
 					case 2:
 						break;
@@ -34,8 +36,8 @@ public class SISGP
 						printStudents();
 					default:
 						break;
+				}
 			}
-		
 		public static void readStudents() throws FileNotFoundException
 		{
 			Scanner fileReader = new Scanner(new File("Students.txt"));
@@ -77,41 +79,36 @@ public class SISGP
 		{
 			
 			boolean removeRunner = true;
-			while(removeRunner == true)
+			while(removeRunner)
 			{
-			System.out.println("What Student would you like to delete?");
-			printStudents();
+			System.out.println(" What Student would you like to delete?");
+			for(Student s: students)
+				{
+					System.out.println("\t" + (students.indexOf(s) + 1) + ") " + s.getName());
+				}
 			Scanner removing = new Scanner(System.in);
 			int childRemove = removing.nextInt();
-			
-			if(childRemove == 1)
-			{
-				students.remove(childRemove - 1);
-			}
-			else
-			{
-			students.remove(childRemove - 1);
-			printStudents(); //calls printStudents method with the student missing that you chose
-			}
-		
-			System.out.println("Would you like to remove another student?");
-			Scanner remove = new Scanner(System.in);
-			String rerunRemove = remove.nextLine();
-			if(rerunRemove == ("yes"))
+			childRemove -= 1;
+			System.out.println(" Removed " + students.get(childRemove).getName() + ". New roster:");
+			students.remove(childRemove);
+			for(Student s: students)
 				{
-					removeRunner = true;
-					printStudents();
-					
+					System.out.println("\t" + (students.indexOf(s) + 1) + ") " + s.getName());
 				}
-			else
-			{
+		
+			System.out.println(" Would you like to remove another student?\n\t"
+					+ "1) Yes\n\t"
+					+ "2) No");
+			int choice = removing.nextInt();
+			if(choice == 2)
+				{
 					removeRunner = false;
+				}
 			}
-		}
 		}
   
     public static void calculateGPA()
-		{//hi
+		{
 			double gpa =0;
 			for(int i =0; i < students.size(); i++)
 				{
