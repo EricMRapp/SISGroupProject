@@ -11,6 +11,8 @@ public class SISGP
 		
 		public static void main(String[] args) throws FileNotFoundException
 			{
+				//remove this before pushing
+				//AddStudent.addStudent();
 				readStudents();
 				printStudents();
 			}
