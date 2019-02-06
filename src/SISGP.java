@@ -15,6 +15,7 @@ public class SISGP
 		public static void main(String[] args) throws FileNotFoundException
 			{
 				readStudents();
+				calculateGPA();
 				System.out.println("Welcome to the Student Information System. Accessing database...\n Would you like to: \n\t"
 						+ "1) Add or Delete a student\n\t"
 						+ "2) Change a student's Grades or Schedule\n\t"
@@ -35,7 +36,7 @@ public class SISGP
 						printStudents();
 						break;
 					case 5:
-						calculateGPA();
+						changeStuff();
 						break;
 					default:
 						break;
@@ -166,7 +167,6 @@ public class SISGP
 									break;
 							}
 						}
-					System.out.println(gpa/3);
 					students.get(i).setGPA(gpa/3);
 					gpa =0;
 				}
@@ -199,6 +199,29 @@ public class SISGP
 					break;
 			}
 		}
+  	public static void changeStuff()
+  	{
+  		System.out.println(" What would like to change?/n/t"
+  				+ "1) Student's schedule/n/t"
+  				+ "2) Student's Grade");
+  		Scanner userInput = new Scanner(System.in);
+  		int userChoice = userInput.nextInt();
+  		switch(userChoice)
+  		{
+  			case 1:
+  				System.out.println("Which student?");
+  				printStudents();
+  				userChoice = userInput.nextInt();
+  				System.out.println(students.get(userChoice-1).getName());
+  				for(Course c: students.get(userChoice).getClasses())
+  					{
+  						System.out.println(c.getName());
+  					}
+  				break;
+  			case 2:
+  				break;
+  		}
+  	}
 
 	}
   
