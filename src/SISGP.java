@@ -27,6 +27,8 @@ public class SISGP
 					case 2:
 						break;
 					case 3:
+						sortStudents();
+						printStudents();
 						break;
 					case 4:
 						printStudents();
@@ -36,7 +38,6 @@ public class SISGP
 						break;
 					default:
 						break;
-				}
 			}
 		
 		public static void readStudents() throws FileNotFoundException
@@ -168,11 +169,37 @@ public class SISGP
 					gpa =0;
 				}
 		}
+  public static void sortStudents()
+		{
+			System.out.println(" Would you like to sort students by \n\t"
+					+ "1) Last Name\n\t"
+					+ "2) GPA\n\t"
+					+ "3) Class Period");
+			int choice = userIntPut.nextInt();
+			switch(choice)
+			{
+				case 1:
+					Collections.sort(students, new NameSorter());
+					break;
+				case 2:
+					Collections.sort(students, new GPASorter());
+					break;
+				case 3:
+					System.out.println(" Which period should students be sorted by?\n\t"
+							+ "1) First Period\n\t"
+							+ "2) Second Period\n\t"
+							+ "3) Third Period");
+					int per = userIntPut.nextInt();
+					Collections.sort(students, new NameSorter());
+					Collections.sort(students, new PeriodSorter(per - 1));
+					break;
+				default:
+					break;
+			}
+		}
 
 	}
   
   
 		
-
-	
 
