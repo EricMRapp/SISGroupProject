@@ -53,7 +53,7 @@ public class SISGP
 				}
 		}
 		public static void calculateGPA()
-		{
+		{//hi
 			DecimalFormat deFor = new DecimalFormat("#.##");
 			double gpa =0;
 			for(int i =0; i < students.size(); i++)
