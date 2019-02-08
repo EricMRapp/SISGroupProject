@@ -213,6 +213,8 @@ public class SISGP
 
   	public static void changeStuff()
   	{
+  		int counter =1;
+
   		System.out.println(" What would like to change?\n\t"
   				+ "1) Student's schedule\n\t"
   				+ "2) Student's Grade");
@@ -221,24 +223,109 @@ public class SISGP
   		switch(userChoice)
   		{
   			case 1:
-  				System.out.println("Which student?");
+
+  				System.out.println(" Which student?");
+
   				for(Student s: students)
   					{
   						System.out.println("\t" + (students.indexOf(s) + 1) + ") " + s.getName());
   					}
   				userChoice = userInput.nextInt();
-  				userChoice--;
-  				System.out.println(students.get(userChoice).getName());
-  				for(Course c: students.get(userChoice).getClasses())
+  				System.out.println(" " +students.get(userChoice-1).getName() + ", ");
+  				for(Course c: students.get(userChoice-1).getClasses())
   					{
-  						System.out.println(c.getName());
+  						System.out.println("\t" +counter + ") " + c.getName());
+  						counter++;
+  					}
+  				System.out.println(" Which class would you like to change?");
+  				int userChoice2 = userInput.nextInt();
+  				System.out.println(" What Would you like to change it to?");
+  				Scanner userString = new Scanner(System.in);
+  				String string = userString.nextLine();
+  				students.get(userChoice -1).getClasses().get(userChoice2-1).setName(string);
+  				counter =1;
+  				for(Course c: students.get(userChoice-1).getClasses())
+  					{
+  						System.out.println("\t" +counter + ") " + c.getName());
+  						counter++;
   					}
   				break;
   			case 2:
+  				System.out.println(" Which student?");
+  				for(Student s: students)
+  					{
+  						System.out.println("\t" + (students.indexOf(s) + 1) + ") " + s.getName());
+  					}
+  				userChoice = userInput.nextInt();
+  				System.out.println(" " +students.get(userChoice-1).getName() + ", ");
+  				for(Course c: students.get(userChoice-1).getClasses())
+  					{
+  						System.out.println("\t" +counter + ") " + c.getGrade());
+  						counter++;
+  					}
+  				System.out.println(" Which grade would you like to change?");
+  				int userChoice3 = userInput.nextInt();
+  				System.out.println(" What Would you like to change it to?");
+  				Scanner userString1 = new Scanner(System.in);
+  				String string1 = userString1.nextLine();
+  				students.get(userChoice -1).getClasses().get(userChoice3-1).setGrade(string1);
+  				counter =1;
+  				for(Course c: students.get(userChoice-1).getClasses())
+  					{
+  						System.out.println("\t" +counter + ") " + c.getGrade());
+  						counter++;
+  					}
+  				double gpa =0;
+  				for(int a =0; a < students.get(userChoice-1).getClasses().size();a++)
+					{
+						switch(students.get(userChoice -1).getClasses().get(a).getGrade())
+						{
+							case "A+":
+								gpa += 4.3;
+								break;
+							case "A":
+								gpa += 4.0;
+								break;
+							case "A-":
+								gpa += 3.7;
+								break;
+							case "B+":
+								gpa += 3.3;
+								break;
+							case "B":
+								gpa += 3.0;
+								break;
+							case "B-":
+								gpa += 2.7;
+								break;
+							case "C+":
+								gpa += 2.3;
+								break;
+							case "C":
+								gpa += 2.0;
+								break;
+							case "C-":
+								gpa += 1.7;
+								break;
+							case "D+":
+								gpa += 1.3;
+								break;
+							case "D":
+								gpa += 1.0;
+								break;
+							case "D-":
+								gpa += 0.7;
+								break;
+							case "F":
+								gpa += 0;
+								break;
+						}
+					}
+				students.get(userChoice-1).setGPA(gpa/3);
   				break;
   		}
   	}
-	}
+}
 
 	
   
