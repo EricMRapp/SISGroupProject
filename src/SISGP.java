@@ -15,33 +15,49 @@ public class SISGP
 		public static void main(String[] args) throws FileNotFoundException
 			{
 				readStudents();
-				calculateGPA();
-				System.out.println("Welcome to the Student Information System. Accessing database...\n Would you like to: \n\t"
-						+ "1) Add or Delete a student\n\t"
-						+ "2) Change a student's Grades or Schedule\n\t"
-						+ "3) Sort students\n\t"
-						+ "4) Print student roster");
-				userChoice = userIntPut.nextInt();
-				switch(userChoice)
-				{
-					case 1:
-						removeStudents();
-						break;
-					case 2:
-						break;
-					case 3:
-						sortStudents();
-						printStudents();
-						break;
-					case 4:
-						printStudents();
-						break;
-					case 5:
-						changeStuff();
-						break;
-					default:
-						break;
-				}
+				System.out.println("Welcome to the Student Information System. Accessing database...");
+				while(true)
+					{
+						calculateGPA();
+						System.out.println(" Would you like to: \n\t"
+								+ "1) Add or Delete a student\n\t"
+								+ "2) Change a student's Grades or Schedule\n\t"
+								+ "3) Sort students\n\t"
+								+ "4) Print student roster");
+						userChoice = userIntPut.nextInt();
+						switch(userChoice)
+						{
+							case 1:
+								System.out.println(" Would you like to\n\t"
+										+ "1) Add a Student\n\t"
+										+ "2) Delete a Student");
+								int choice = userIntPut.nextInt();
+								if(choice == 1)
+									{
+										AddStudent.addStudent();
+									}
+								else
+									{
+										removeStudents();
+									}
+								break;
+							case 2:
+								changeStuff();
+								break;
+							case 3:
+								sortStudents();
+								printStudents();
+								break;
+							case 4:
+								printStudents();
+								break;
+							case 5:
+								changeStuff();
+								break;
+							default:
+								break;
+						}
+					}
 			}
 		public static void readStudents() throws FileNotFoundException
 		{
@@ -197,8 +213,8 @@ public class SISGP
 
   	public static void changeStuff()
   	{
-  		System.out.println(" What would like to change?/n/t"
-  				+ "1) Student's schedule/n/t"
+  		System.out.println(" What would like to change?\n\t"
+  				+ "1) Student's schedule\n\t"
   				+ "2) Student's Grade");
   		Scanner userInput = new Scanner(System.in);
   		int userChoice = userInput.nextInt();
@@ -206,9 +222,13 @@ public class SISGP
   		{
   			case 1:
   				System.out.println("Which student?");
-  				printStudents();
+  				for(Student s: students)
+  					{
+  						System.out.println("\t" + (students.indexOf(s) + 1) + ") " + s.getName());
+  					}
   				userChoice = userInput.nextInt();
-  				System.out.println(students.get(userChoice-1).getName());
+  				userChoice--;
+  				System.out.println(students.get(userChoice).getName());
   				for(Course c: students.get(userChoice).getClasses())
   					{
   						System.out.println(c.getName());

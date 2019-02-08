@@ -17,10 +17,10 @@ public class AddStudent
 					{
 						int period = i+1;
 						 
-						System.out.println("What's there " + period + " class");
+						System.out.println("What's their " + period + " class?");
 						String className = userInput.nextLine();
 						
-						System.out.println("What's there " + period + " grade?");
+						System.out.println("What's their " + period + " grade?");
 						String grade = userInput.nextLine();
 						
 						newGuy.getClasses().add(new Course(period, className, grade));
